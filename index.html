@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css" />
+    <title>Pokedex</title>
+
+</head>
+
+<body>
+    <header class="center">
+        <h1 class="title">Pokedex</h1>
+    </header>
+    <div class="center">
+        <input type="text" id="input-search"><br><br>
+        <button type="button" 
+            onclick="createCard()">
+            Search
+        </button>
+    </div>
+
+    <div id="card-container" class="card-container">
+        <div class="card">
+            <h2>Charizard</h2>
+            <img class="card-img" src="Media/6.png"/>
+            <div class="chip-container">
+                <h4 class="chip fire">Fire</h4>
+                <h4 class="chip flying">Flying</h4>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function createCard(){
+            // const numero = 1;
+            // let numero2 = 1;
+            // var numero3 = 1;
+            // console.log('gabriel vai matar o javscripto')
+
+            let card = document.createElement("div")
+            card.className = "card"
+
+            let cardTitle = document.createElement("h2")
+            cardTitle.innerText = "Charizard"
+            card.append(cardTitle)
+
+            let cardImage = document.createElement("img")
+            cardImage.src="Media/6.png"
+            cardImage.className = "card-img"
+            card.append(cardImage)
+
+            let chipContainer = document.createElement("div")
+            chipContainer.className = "chip-container"
+            card.append(chipContainer)
+
+            let chipFire = document.createElement("h4")
+            chipFire.className = "chip fire"
+            chipFire.innerText = "Fire"
+            chipContainer.append(chipFire)
+
+            let chipFlying = document.createElement("h4")
+            chipFlying.className = "chip flying"
+            chipFlying.innerText = "Flying"
+            chipContainer.append(chipFlying)
+            
+
+            let cardContainer = document.getElementById("card-container")
+            cardContainer.append(card)
+        }
+    </script>
+</body>
+
+</html>
