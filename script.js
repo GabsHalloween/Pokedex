@@ -21,19 +21,26 @@ const types = {
 console.log("carregando")
 onLoad()
 async function onLoad() {
+    //fetches for API
     let listPokemonResponse = await fetch("https://pokeapi.co/api/v2/pokemon");
+    //json of the API
     let listPokemonJson = await listPokemonResponse.json();
     console.log(listPokemonJson)
+    
+    //slot of pokemon
+    for(let listPokemonElement of listPokemonJson.results) {
+        console.log(listPokemonElement)
+  
+        let fetchPokemonChosenResponse = await fetch(listPokemonElement.url)
+        let pokemonChosenInformationJson = await fetchPokemonChosenResponse.json();
+        console.log(pokemonChosenInformationJson)
 
-    let bulbassaur = listPokemonJson.results[0]
-    console.log(bulbassaur)
+        createCard(pokemonChosenInformationJson)
+        console.log(pokemonSlot)
+    }
 
 
-    let fetchBulbassaurResponse = await fetch(bulbassaur.url)
-    let bulbassaurInformationJson = await fetchBulbassaurResponse.json();
-    console.log(bulbassaurInformationJson)
 
-    createCard(bulbassaurInformationJson)
 }
 function createCard(pokemon) {
     console.log(pokemon)
